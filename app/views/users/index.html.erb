@@ -6,7 +6,7 @@
         <% @users.each do |user| %>
           <p class="active-user bg-white">
           <span class="online-icon d-inline-block bg-secondary bg-success"></span>
-          <span class="username" data-id="<%= user.id %>">@<%= user.email %></span>
+          <span class="username" data-id="<%= user.id %>">@<%= user.username %></span>
         </p>
         <% end %>
       </div>
