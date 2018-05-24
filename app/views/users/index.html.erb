@@ -3,11 +3,16 @@
     <div class="col-6 col-md-3 col-lg-2 bg-dark full-page">
       <h6 class="text-white my-3">Online Users</h6>
       <div class="left">
-        <p class="active-user bg-white"><span class="online-icon d-inline-block bg-secondary bg-success"></span> @troy34</p>
+        <% @users.each do |user| %>
+          <p class="active-user bg-white">
+          <span class="online-icon d-inline-block bg-secondary bg-success"></span>
+          <span class="username" data-id="<%= user.id %>">@<%= user.email %></span>
+        </p>
+        <% end %>
       </div>
     </div>
     <div class="col-6 col-md-9 col-lg-10 bg-light full-page right my-3">
-      <h4>5 users are currently online</h4>
+      <h4 class="users-count">5 users are currently online</h4>
     </div>
   </div>
 </div>
