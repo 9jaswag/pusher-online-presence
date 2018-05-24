@@ -4,13 +4,20 @@
     <title>PusherOnlinePresence</title>
     <%= csrf_meta_tags %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <% if notice %>
+        <p class="notice alert alert-info"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert alert-danger"><%= alert %></p>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
