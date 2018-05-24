@@ -8,17 +8,16 @@
       <h6 class="text-white my-3">Online Users</h6>
       <div class="left">
         <% @users.each do |user| %>
-          <% if user.username != current_user.username %>
-            <p class="active-user bg-white">
-              <span class="online-icon d-inline-block <%= user.is_signed_in ? 'bg-success': 'bg-secondary'  %>"  data-id="<%= user.id %>"></span>
+          <% if user.username != current_user.username and user.is_signed_in %>
+            <p class="active-user bg-white" data-id="<%= user.id %>">
+              <span class="online-icon d-inline-block bg-success"></span>
               <span class="username">@<%= user.username %></span>
             </p>
           <% end %>
         <% end %>
       </div>
     </div>
-    <div class="col-6 col-md-9 col-lg-10 bg-light full-page right my-3">
-      <h4 class="users-count d-inline-block">5 users are currently online</h4>
+    <div class="col-6 col-md-9 col-lg-10 bg-light full-page right py-3">
       <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-warning d-inline-block float-right' %>
     </div>
   </div>
