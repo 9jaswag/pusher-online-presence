@@ -24,3 +24,33 @@
  .login-container {
    border-radius: 3px;
  }
+
+ .full-page {
+   height: 100vh;
+ }
+
+ .left {
+   overflow-y: scroll;
+   height: 86vh;
+ }
+
+ .active-user {
+   border-radius: 3px;
+   padding-left: 0.5rem;
+   font-weight: 900;
+   margin-right: 0.5rem;
+
+   .online-icon {
+     border-radius: 50%;
+     width: 0.5rem;
+     height: 0.5rem;
+   }
+ }
+
+ .left::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+.left::-webkit-scrollbar-thumb {
+  background: #fff3; 
+}
