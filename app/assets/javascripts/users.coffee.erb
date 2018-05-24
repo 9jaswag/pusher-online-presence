@@ -2,19 +2,27 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready =>
-  updateStatus = (data, status) ->
-    user = $ 'span[data-id=\'' + data.id + '\']'
-    if status == 'login' then user.addClass('bg-success') else user.removeClass('bg-success')
+  addLoggenInUser = (user) ->
+    $('.left').append """
+      <p class="active-user bg-white" data-id="#{user.id}">
+        <span class="online-icon d-inline-block bg-success"></span>
+        <span class="username">@#{user.username}</span>
+      </p>
+    """
+    return
+
+  removeLoggedOutUser = (user) ->
+    user = $ 'p[data-id=\'' + user.id + '\']'
+    $(user).remove()
+    return
   
   pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',
     cluster: '<%= ENV["PUSHER_CLUSTER"] %>'
     encrypted: true)
   channel = pusher.subscribe('activity')
   channel.bind 'login', (data) ->
-    console.log 'login'
-    updateStatus(data, 'login')
+    addLoggenInUser data
   channel.bind 'logout', (data) ->
-    console.log 'logout'
-    updateStatus(data, 'logout')
+    removeLoggedOutUser data
     return
   return
