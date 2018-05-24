@@ -1,0 +1,20 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).ready =>
+  updateStatus = (data, status) ->
+    user = $ 'span[data-id=\'' + data.id + '\']'
+    if status == 'login' then user.addClass('bg-success') else user.removeClass('bg-success')
+  
+  pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',
+    cluster: '<%= ENV["PUSHER_CLUSTER"] %>'
+    encrypted: true)
+  channel = pusher.subscribe('activity')
+  channel.bind 'login', (data) ->
+    console.log 'login'
+    updateStatus(data, 'login')
+  channel.bind 'logout', (data) ->
+    console.log 'logout'
+    updateStatus(data, 'logout')
+    return
+  return
