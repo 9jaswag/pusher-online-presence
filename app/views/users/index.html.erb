@@ -12,7 +12,8 @@
       </div>
     </div>
     <div class="col-6 col-md-9 col-lg-10 bg-light full-page right my-3">
-      <h4 class="users-count">5 users are currently online</h4>
+      <h4 class="users-count d-inline-block">5 users are currently online</h4>
+      <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-warning d-inline-block float-right' %>
     </div>
   </div>
 </div>
