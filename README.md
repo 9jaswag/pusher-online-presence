@@ -3,6 +3,7 @@ Build an online presence with Ruby on Rails and Pusher Channels
 
 A tutorial to showcase realtime functionality of Pusher Channels in Ruby
 
+[View tutorial](https://pusher.com/tutorials/online-presence-ruby-rails)
 
 Getting Started
 ------
